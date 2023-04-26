@@ -16,3 +16,26 @@
 # повторяется более 1 раза, к нему
 # добавляется количество повторений.
 
+def RLE(string: str) -> str: 
+    
+    out_string: str = str()
+    count = 1
+    current_str = str()
+    for el in (string + " "): 
+        if current_str != "":
+            if current_str == el:
+                count += 1
+            else:
+                if count != 1:
+                    out_string += current_str + str(count)
+                    count = 1
+                    current_str = el
+                else: 
+                    out_string += current_str
+                    count = 1
+                    current_str = el
+        else:
+            current_str = el
+    return out_string
+    
+print(RLE("AAAABBBCCXYZDDDDEEEFFFAAAAAABBBBBBBBBBBBBBBBBBBBBBBBBBBB"))
